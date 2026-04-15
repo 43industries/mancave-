@@ -102,133 +102,29 @@ body.nav-menu-open {
   overflow: hidden;
 }
 
-/* ── Circuit-line decorative overlay ── */
+/* ── Circuit board decorative overlay (SVG pattern) ── */
 .circuit-lines {
   position: fixed;
   inset: 0;
   z-index: 10;
   pointer-events: none;
   overflow: hidden;
+  background:
+    url("../public/circuit-pattern.svg") center / 800px 1200px repeat;
+  opacity: 0.55;
+  mix-blend-mode: screen;
 }
-
-.circuit-lines::before,
-.circuit-lines::after {
-  content: "";
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  border: 1.5px solid rgba(0, 255, 231, 0.18);
-}
-
-.circuit-lines::before {
-  top: 90px;
-  right: -60px;
-  border-left: none;
-  border-bottom: none;
-  box-shadow: inset -4px -4px 12px rgba(0, 255, 231, 0.06);
-}
-
-.circuit-lines::after {
-  bottom: 60px;
-  left: -60px;
-  border-right: none;
-  border-top: none;
-  box-shadow: inset 4px 4px 12px rgba(0, 255, 231, 0.06);
-}
-
-.circuit-trace {
-  display: block;
-  position: absolute;
-}
-
-.circuit-left {
-  left: 24px;
-  top: 28%;
-  width: 2px;
-  height: 260px;
-  background: linear-gradient(180deg, transparent, rgba(0, 255, 231, 0.35) 20%, rgba(0, 255, 231, 0.35) 80%, transparent);
-  box-shadow: 0 0 6px rgba(0, 255, 231, 0.15);
-}
-
-.circuit-left::before,
-.circuit-left::after {
-  content: "";
-  position: absolute;
-  background: rgba(0, 255, 231, 0.35);
-  box-shadow: 0 0 6px rgba(0, 255, 231, 0.15);
-}
-
-.circuit-left::before {
-  top: 52px;
-  left: 0;
-  width: 80px;
-  height: 2px;
-}
-
-.circuit-left::after {
-  top: 160px;
-  left: 0;
-  width: 48px;
-  height: 2px;
-}
-
-.circuit-right {
-  right: 24px;
-  bottom: 18%;
-  width: 2px;
-  height: 220px;
-  background: linear-gradient(180deg, transparent, rgba(0, 255, 231, 0.3) 20%, rgba(0, 255, 231, 0.3) 80%, transparent);
-  box-shadow: 0 0 6px rgba(0, 255, 231, 0.12);
-}
-
-.circuit-right::before,
-.circuit-right::after {
-  content: "";
-  position: absolute;
-  background: rgba(0, 255, 231, 0.3);
-  box-shadow: 0 0 6px rgba(0, 255, 231, 0.12);
-}
-
-.circuit-right::before {
-  top: 40px;
-  right: 0;
-  width: 64px;
-  height: 2px;
-}
-
-.circuit-right::after {
-  top: 130px;
-  right: 0;
-  width: 96px;
-  height: 2px;
-}
-
-.circuit-node {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(0, 255, 231, 0.6);
-  box-shadow: 0 0 8px rgba(0, 255, 231, 0.4);
-}
-
-.circuit-node-1 { left: 20px; top: calc(28% + 52px); }
-.circuit-node-2 { left: 100px; top: calc(28% + 48px); }
-.circuit-node-3 { left: 20px; top: calc(28% + 160px); }
-.circuit-node-4 { right: 20px; bottom: calc(18% + 180px); }
-.circuit-node-5 { right: 84px; bottom: calc(18% + 180px + 4px); }
-.circuit-node-6 { right: 20px; bottom: calc(18% + 90px); }
 
 @media (max-width: 768px) {
-  .circuit-lines::before,
-  .circuit-lines::after {
-    width: 200px;
-    height: 200px;
+  .circuit-lines {
+    background-size: 500px 750px;
+    opacity: 0.4;
   }
+}
 
-  .circuit-left { height: 180px; }
-  .circuit-right { display: none; }
-  .circuit-node-4,
-  .circuit-node-5,
-  .circuit-node-6 { display: none; }
+@media (max-width: 480px) {
+  .circuit-lines {
+    background-size: 400px 600px;
+    opacity: 0.3;
+  }
 }
