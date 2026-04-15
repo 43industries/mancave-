@@ -1,11 +1,13 @@
-# Netlify: build Vite output and publish static files from website/dist.
-# Troubleshooting: https://answers.netlify.com/t/support-guide-i-ve-deployed-my-site-but-i-still-see-page-not-found/125?utm_source=404page&utm_campaign=community_tracking
+# Netlify monorepo: all commands run from /website; static output is /website/dist.
+# In the Netlify UI, leave "Base directory" empty (repo root) so this file is used as-is.
+# Doc: https://docs.netlify.com/configure-builds/file-based-configuration/
 
 [build]
-  command = "cd website && npm ci && npm run build"
-  publish = "website/dist"
+  base = "website"
+  command = "npm ci && npm run build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
 
-# Leave VITE_BASE_URL unset in Netlify (site root). GitHub Actions sets it only for github.io project URLs.
+# Do not set VITE_BASE_URL here (defaults to "/" for Netlify root).

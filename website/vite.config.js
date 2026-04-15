@@ -59,8 +59,10 @@ export default defineConfig({
     {
       name: "copy-site-js",
       closeBundle() {
+        const distDir = path.join(__dirname, "dist");
+        fs.writeFileSync(path.join(distDir, ".nojekyll"), "");
         const from = path.join(__dirname, "js", "site.js");
-        const to = path.join(__dirname, "dist", "js", "site.js");
+        const to = path.join(distDir, "js", "site.js");
         if (fs.existsSync(from)) {
           fs.mkdirSync(path.dirname(to), { recursive: true });
           fs.copyFileSync(from, to);
