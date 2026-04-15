@@ -6,6 +6,21 @@ import { fileURLToPath } from "url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
+function injectHtmlBase() {
+  const base = process.env.VITE_BASE_URL;
+  if (!base || base === "/") {
+    return { name: "inject-html-base-skip" };
+  }
+  const href = base.endsWith("/") ? base : `${base}/`;
+  return {
+    name: "inject-html-base",
+    transformIndexHtml(html) {
+      if (/<base\s/i.test(html)) return html;
+      return html.replace(/<head(\s[^>]*)?>/i, `<head$1>\n  <base href="${href}">`);
+    },
+  };
+}
+
 function faviconNo404() {
   const handler = (req, res, next) => {
     const url = req.url?.split("?")[0] ?? "";
@@ -28,6 +43,7 @@ function faviconNo404() {
 }
 
 export default defineConfig({
+  base: process.env.VITE_BASE_URL || "/",
   build: {
     rollupOptions: {
       input: {
@@ -38,6 +54,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    injectHtmlBase(),
     faviconNo404(),
     {
       name: "copy-site-js",
