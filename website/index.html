@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mancave Smart Control Ltd — automation, energy, robotics, and smart infrastructure for Africa. Engineering intelligent systems from Nairobi, Kenya.">
+<meta name="theme-color" content="#050a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23050a12' width='32' height='32'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%2300ffe7' font-size='15' font-family='system-ui,sans-serif' font-weight='700'%3EM%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+<title>Mancave Smart Control Ltd – Engineering Intelligent Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a12;
+    --bg2: #080f1c;
+    --bg3: #0a1525;
+    --cyan: #00ffe7;
+    --cyan-dim: #00ffe720;
+    --cyan-mid: #00ffe750;
+    --gold: #ffc93c;
+    --gold-dim: #ffc93c15;
+    --white: #e8f4ff;
+    --muted: #6a8aaa;
+    --border: #1a2e45;
+    --border-glow: #00ffe730;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  /* SCANLINE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    background: rgba(5,10,18,0.9);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--cyan);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo .logo-icon {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--cyan);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 900;
+    color: var(--cyan);
+    position: relative;
+  }
+  .nav-logo .logo-icon::before {
+    content: '';
+    position: absolute; inset: 3px;
+    border: 1px solid var(--cyan-mid);
+  }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    padding: 8px 22px;
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .nav-cta:hover {
+    background: var(--cyan-dim);
+    box-shadow: 0 0 20px var(--cyan-mid);
+  }
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    animation: grid-drift 20s linear infinite;
+  }
+  @keyframes grid-drift {
+    from { transform: translateY(0); }
+    to { transform: translateY(60px); }
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,255,231,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; max-width: 780px; }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--cyan);
+  }
+  .hero h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--cyan); }
+  .hero-sub {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(16px, 2.5vw, 28px);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 28px;
+  }
+  .hero p {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+  .hero-btns { display: flex; gap: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--cyan);
+    color: var(--bg);
+    padding: 14px 36px;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 30px var(--cyan-mid);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 14px 36px;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 12px 20px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--cyan);
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::before {
+    content: '';
+    display: block; width: 30px; height: 1px;
+    background: var(--cyan);
+  }
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(24px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .section-title span { color: var(--cyan); }
+  .section-desc { color: var(--muted); max-width: 560px; font-size: 17px; line-height: 1.8; margin-bottom: 60px; }
+  /* SERVICES */
+  #services { background: var(--bg); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    background: var(--border);
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { background: var(--bg3); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px;
+    border: 1px solid var(--border-glow);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    font-size: 22px;
+    position: relative;
+  }
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid var(--cyan-dim);
+  }
+  .service-card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .service-card p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+  /* TECH */
+  #technology { background: var(--bg2); }
+  .tech-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .tech-list { margin-top: 20px; }
+  .tech-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .tech-dot {
+    width: 8px; height: 8px;
+    background: var(--cyan);
+    flex-shrink: 0;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+  .tech-item span {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .tech-badge {
+    margin-left: auto;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    font-family: 'Space Mono', monospace;
+    border: 1px solid var(--border-glow);
+    padding: 3px 10px;
+  }
+  .tech-visual {
+    aspect-ratio: 1;
+    max-width: 420px;
+    position: relative;
+    margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tech-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+  }
+  .tech-ring-1 { width: 100%; height: 100%; border-color: var(--border); animation: spin 30s linear infinite; }
+  .tech-ring-2 { width: 75%; height: 75%; border-color: var(--border-glow); animation: spin 20s linear infinite reverse; }
+  .tech-ring-3 { width: 50%; height: 50%; border-color: var(--cyan-mid); animation: spin 12s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .tech-ring-1::after, .tech-ring-2::after, .tech-ring-3::after {
+    content: '';
+    position: absolute;
+    width: 8px; height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    top: -4px; left: 50%;
+    transform: translateX(-50%);
+  }
+  .tech-core {
+    position: relative; z-index: 2;
+    text-align: center;
+  }
+  .tech-core-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  /* INDUSTRIES */
+  #industries { background: var(--bg); }
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .industry-card {
+    border: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .industry-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .industry-card:hover {
+    border-color: var(--border-glow);
+    transform: translateY(-4px);
+  }
+  .industry-card:hover::after { transform: scaleX(1); }
+  .industry-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+  .industry-card h4 {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  /* WHY US */
+  #why { background: var(--bg2); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    border: 1px solid var(--border);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-num {
+    position: absolute;
+    top: 20px; right: 24px;
+    font-family: 'Orbitron', monospace;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--cyan-dim);
+    line-height: 1;
+  }
+  .why-card h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .why-card p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+  /* CONTACT / CTA */
+  #contact {
+    background: var(--bg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute;
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(0,255,231,0.05) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .contact-inner { position: relative; max-width: 700px; margin: 0 auto; }
+  .contact-inner .section-tag { justify-content: center; }
+  .contact-inner .section-tag::before { display: none; }
+  .contact-inner .section-desc { margin: 0 auto 48px; text-align: center; }
+  .contact-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 48px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--cyan); }
+  .contact-link-icon { color: var(--cyan); font-size: 16px; }
+  .contact-form {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 48px;
+    text-align: left;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 12px 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--cyan); }
+  .form-group select option { background: var(--bg2); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  /* FOOTER */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 48px 5% 24px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand p {
+    color: var(--muted); font-size: 14px; line-height: 1.8; margin-top: 16px; max-width: 280px;
+  }
+  .footer-col h5 {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 20px;
+  }
+  .footer-col a {
+    display: block; color: var(--muted); text-decoration: none;
+    font-size: 14px; margin-bottom: 10px; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { color: var(--muted); font-size: 12px; font-family: 'Space Mono', monospace; }
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .tech-layout { grid-template-columns: 1fr; }
+    .tech-visual { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .contact-form { padding: 28px; }
+  }
+  /* PAGE TRANSITIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+<link rel="stylesheet" href="css/nav.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">M</div>
+    MSC
+  </a>
+  <div class="nav-links" id="primary-nav">
+    <a href="services.html">Services</a>
+    <a href="#technology">Technology</a>
+    <a href="#industries">Industries</a>
+    <a href="about.html">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <a href="#contact" class="nav-cta">Get Quote</a>
+  </div>
+</nav>
+<div class="nav-backdrop" aria-hidden="true"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content fade-in visible">
+    <div class="hero-tag">Nairobi, Kenya — Est. MSC</div>
+    <h1>Engineering<br><span>Intelligent</span><br>Systems</h1>
+    <div class="hero-sub">FOR THE FUTURE</div>
+    <p>Automation · Energy · Robotics · Smart Infrastructure. Building the next generation of smart environments and automated industries across Africa and beyond.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Explore Solutions</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">6+</span>
+    <span class="stat-label">Industries Served</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">4</span>
+    <span class="stat-label">Core Divisions</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Custom Solutions</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">AI</span>
+    <span class="stat-label">Powered Systems</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">What We Do</div>
+  <h2 class="section-title">Our <span>Divisions</span></h2>
+  <p class="section-desc">Four specialized engineering divisions, one unified vision: intelligent systems that transform how industries operate.</p>
+  <div class="services-grid fade-in">
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Smart Home Solutions</h3>
+      <p>Enhancing residential living through automated and integrated control systems. Seamless, intuitive, and energy-efficient smart environments for modern living.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚙️</div>
+      <h3>Industrial Automation</h3>
+      <p>Optimizing manufacturing processes with advanced control and monitoring technologies. Reduce downtime, increase throughput, and gain real-time operational intelligence.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>Energy Management</h3>
+      <p>Reducing energy consumption and promoting sustainable practices through smart solutions. Solar PV integration, battery storage, and intelligent energy monitoring.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3>Robotics & Future Systems</h3>
+      <p>Inspection robots, agricultural robots, warehouse automation, and AI-powered robotic systems. The future of industry is autonomous.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="technology">
+  <div class="tech-layout">
+    <div>
+      <div class="section-tag">Tech Stack</div>
+      <h2 class="section-title">Platforms &<br><span>Capabilities</span></h2>
+      <p class="section-desc">We integrate best-in-class technologies to deliver robust, scalable smart control solutions.</p>
+      <div class="tech-list fade-in">
+        <div class="tech-item"><div class="tech-dot"></div><span>PLC Control Systems</span><span class="tech-badge">Automation</span></div>
+        <div class="tech-item"><div class="tech-dot"></div><span>SCADA Platforms</span><span class="tech-badge">Automation</span></div>
+        <div class="tech-item"><div class="tech-dot"></div><span>IoT Devices & Networks</span><span class="tech-badge">Connectivity</span></div>
+        <div class="tech-item"><div class="tech-dot"></div><span>Solar PV + Battery Storage</span><span class="tech-badge">Energy</span></div>
+        <div class="tech-item"><div class="tech-dot"></div><span>Machine Vision</span><span class="tech-badge">Robotics</span></div>
+        <div class="tech-item"><div class="tech-dot"></div><span>Autonomous Navigation</span><span class="tech-badge">Robotics</span></div>
+        <div class="tech-item"><div class="tech-dot"></div><span>AI / Embedded Systems</span><span class="tech-badge">Intelligence</span></div>
+      </div>
+    </div>
+    <div class="tech-visual">
+      <div class="tech-ring tech-ring-1"></div>
+      <div class="tech-ring tech-ring-2"></div>
+      <div class="tech-ring tech-ring-3"></div>
+      <div class="tech-core">
+        <div class="tech-core-label">MSC<br>CORE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="section-tag">Market Reach</div>
+  <h2 class="section-title">Industries <span>Served</span></h2>
+  <p class="section-desc">From homes to hospitals, farms to factories — our solutions are built for every environment.</p>
+  <div class="industries-grid fade-in">
+    <div class="industry-card"><span class="industry-icon">🏘️</span><h4>Residential</h4></div>
+    <div class="industry-card"><span class="industry-icon">🏢</span><h4>Commercial</h4></div>
+    <div class="industry-card"><span class="industry-icon">🏭</span><h4>Industrial</h4></div>
+    <div class="industry-card"><span class="industry-icon">🌾</span><h4>Agriculture</h4></div>
+    <div class="industry-card"><span class="industry-icon">🏥</span><h4>Healthcare</h4></div>
+    <div class="industry-card"><span class="industry-icon">🎓</span><h4>Education</h4></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-tag">Why Choose MSC</div>
+  <h2 class="section-title">Our <span>Edge</span></h2>
+  <p class="section-desc">What makes Mancave Smart Control the right engineering partner for your project.</p>
+  <div class="why-grid fade-in">
+    <div class="why-card"><div class="why-num">01</div><h3>Expertise</h3><p>A team of highly skilled engineers and technology experts delivering proven smart control solutions.</p></div>
+    <div class="why-card"><div class="why-num">02</div><h3>Customization</h3><p>Every solution is tailored to your specific requirements — no off-the-shelf systems, only purpose-built technology.</p></div>
+    <div class="why-card"><div class="why-num">03</div><h3>Reliability</h3><p>High-performance solutions backed by comprehensive maintenance and support services for continuous operation.</p></div>
+    <div class="why-card"><div class="why-num">04</div><h3>Innovation</h3><p>We continuously invest in R&D to stay ahead of the curve and deliver the most advanced solutions available.</p></div>
+    <div class="why-card"><div class="why-num">05</div><h3>Sustainability</h3><p>Every system we design prioritizes energy efficiency and sustainable practices for a better future.</p></div>
+    <div class="why-card"><div class="why-num">06</div><h3>Long-term ROI</h3><p>We deliver exceptional value — reducing operational costs, improving efficiency, and ensuring lasting returns.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="section-title">Let's Build<br><span>Something Smart</span></h2>
+    <p class="section-desc">Ready to automate, energize, or robotize your operations? Tell us about your project and we'll engineer the right solution.</p>
+    <div class="contact-links">
+      <a href="mailto:info@mancavesmartcontrol.com" class="contact-link">
+        <span class="contact-link-icon">✉</span> info@mancavesmartcontrol.com
+      </a>
+      <a href="http://www.mancavesmartcontrol.com" class="contact-link">
+        <span class="contact-link-icon">🌐</span> mancavesmartcontrol.com
+      </a>
+      <a href="tel:+254" class="contact-link">
+        <span class="contact-link-icon">📞</span> +254
+      </a>
+    </div>
+    <div class="contact-form fade-in">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="John Kamau">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@company.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+254 7XX XXX XXX">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option>Smart Home Solutions</option>
+            <option>Industrial Automation</option>
+            <option>Energy Management</option>
+            <option>Robotics & Future Systems</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Project Brief</label>
+        <textarea placeholder="Tell us about your project, requirements, and timeline..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="alert('Thank you! We will be in touch shortly.')">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:12px;">
+        <div class="logo-icon">M</div>
+        MANCAVE SMART CONTROL LTD
+      </a>
+      <p>Engineering intelligent systems for the future. Automation, energy, robotics and smart infrastructure across Africa.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Divisions</h5>
+      <a href="services.html#smart-home">Smart Home</a>
+      <a href="services.html#industrial">Industrial</a>
+      <a href="services.html#energy">Energy</a>
+      <a href="services.html#robotics">Robotics</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="about.html">About Us</a>
+      <a href="about.html#values">Core Values</a>
+      <a href="about.html#capabilities">Capabilities</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="mailto:info@mancavesmartcontrol.com">info@mancavesmartcontrol.com</a>
+      <a href="http://www.mancavesmartcontrol.com">mancavesmartcontrol.com</a>
+      <a href="tel:+254">+254</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Mancave Smart Control Ltd. All rights reserved.</p>
+    <p>Nairobi, Kenya</p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

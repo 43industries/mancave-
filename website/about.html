@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Mancave Smart Control Ltd — mission, vision, values, and engineering capabilities from Nairobi, Kenya.">
+<meta name="theme-color" content="#050a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23050a12' width='32' height='32'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%2300ffe7' font-size='15' font-family='system-ui,sans-serif' font-weight='700'%3EM%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+<title>About – Mancave Smart Control Ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050a12; --bg2: #080f1c; --bg3: #0a1525;
+    --cyan: #00ffe7; --cyan-dim: #00ffe720; --cyan-mid: #00ffe750;
+    --gold: #ffc93c; --gold-dim: #ffc93c15;
+    --white: #e8f4ff; --muted: #6a8aaa; --border: #1a2e45; --border-glow: #00ffe730;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--white);
+    font-family: 'Rajdhani', sans-serif; font-size: 17px; line-height: 1.6; overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none; z-index: 9999;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%; height: 70px;
+    background: rgba(5,10,18,0.9); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+    letter-spacing: 3px; color: var(--cyan); text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo .logo-icon {
+    width: 36px; height: 36px; border: 1.5px solid var(--cyan);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 900; color: var(--cyan); position: relative;
+  }
+  .nav-logo .logo-icon::before { content: ''; position: absolute; inset: 3px; border: 1px solid var(--cyan-mid); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+  .nav-cta {
+    background: transparent; border: 1px solid var(--cyan); color: var(--cyan);
+    padding: 8px 22px; font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; cursor: pointer; text-decoration: none; transition: background 0.2s, box-shadow 0.2s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .nav-cta:hover { background: var(--cyan-dim); box-shadow: 0 0 20px var(--cyan-mid); }
+  /* PAGE HERO */
+  .page-hero {
+    padding: 140px 5% 80px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .page-hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px; opacity: 0.3;
+  }
+  .page-hero-content { position: relative; }
+  .breadcrumb {
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted);
+    letter-spacing: 2px; margin-bottom: 24px;
+  }
+  .breadcrumb a { color: var(--cyan); text-decoration: none; }
+  .breadcrumb span { margin: 0 8px; }
+  .page-hero h1 {
+    font-family: 'Orbitron', monospace; font-size: clamp(32px, 5vw, 64px);
+    font-weight: 900; line-height: 1.05; color: var(--white); margin-bottom: 20px;
+  }
+  .page-hero h1 span { color: var(--cyan); }
+  .page-hero p { font-size: 18px; color: var(--muted); max-width: 600px; line-height: 1.8; }
+  section { padding: 80px 5%; }
+  .section-tag {
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--cyan);
+    letter-spacing: 4px; text-transform: uppercase; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-tag::before { content: ''; display: block; width: 30px; height: 1px; background: var(--cyan); }
+  .section-title {
+    font-family: 'Orbitron', monospace; font-size: clamp(22px, 3.5vw, 40px);
+    font-weight: 700; line-height: 1.1; margin-bottom: 20px;
+  }
+  .section-title span { color: var(--cyan); }
+  /* MISSION/VISION SPLIT */
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); margin-top: 40px; }
+  .mv-card { background: var(--bg2); padding: 52px 44px; position: relative; }
+  .mv-card::before {
+    content: attr(data-label);
+    position: absolute; top: 28px; right: 32px;
+    font-family: 'Orbitron', monospace; font-size: 64px; font-weight: 900;
+    color: var(--cyan-dim); line-height: 1;
+  }
+  .mv-card h3 {
+    font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+    letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+  }
+  .mv-card p { color: var(--muted); font-size: 17px; line-height: 1.9; max-width: 380px; }
+  /* VALUES */
+  #values { background: var(--bg2); }
+  .values-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
+  .value-item {
+    border: 1px solid var(--border); padding: 28px 24px;
+    display: flex; align-items: center; gap: 16px;
+    transition: border-color 0.3s;
+  }
+  .value-item:hover { border-color: var(--border-glow); }
+  .value-dot { width: 10px; height: 10px; background: var(--cyan); flex-shrink: 0; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+  .value-item span {
+    font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--white);
+  }
+  /* CAPABILITIES */
+  #capabilities { background: var(--bg); }
+  .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+  .cap-card { border: 1px solid var(--border); padding: 36px 28px; position: relative; overflow: hidden; }
+  .cap-card::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--cyan); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s;
+  }
+  .cap-card:hover::after { transform: scaleY(1); }
+  .cap-card h3 {
+    font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+  }
+  .cap-card p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+  /* APPROACH */
+  #approach { background: var(--bg2); }
+  .approach-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; background: var(--border); margin-top: 40px; }
+  .step { background: var(--bg2); padding: 40px 28px; position: relative; }
+  .step-num {
+    font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 3px; color: var(--cyan); margin-bottom: 16px;
+  }
+  .step h4 {
+    font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+    letter-spacing: 1px; color: var(--white); margin-bottom: 12px;
+  }
+  .step p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 48px 5% 24px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.8; margin-top: 16px; max-width: 280px; }
+  .footer-col h5 { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan); margin-bottom: 20px; }
+  .footer-col a { display: block; color: var(--muted); text-decoration: none; font-size: 14px; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { color: var(--muted); font-size: 12px; font-family: 'Space Mono', monospace; }
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 768px) {
+    .mv-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+<link rel="stylesheet" href="css/nav.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon">M</div>
+    MSC
+  </a>
+  <div class="nav-links" id="primary-nav">
+    <a href="services.html">Services</a>
+    <a href="index.html#technology">Technology</a>
+    <a href="index.html#industries">Industries</a>
+    <a href="about.html" class="active">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <a href="index.html#contact" class="nav-cta">Get Quote</a>
+  </div>
+</nav>
+<div class="nav-backdrop" aria-hidden="true"></div>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>About Us</div>
+    <h1>About <span>Mancave</span><br>Smart Control</h1>
+    <p>An African engineering technology company specializing in automation, robotics, renewable energy integration, and intelligent infrastructure — built to transform industries and enhance lives.</p>
+  </div>
+</div>
+
+<!-- MISSION / VISION -->
+<section id="mission">
+  <div class="section-tag">Who We Are</div>
+  <h2 class="section-title">Our <span>Purpose</span></h2>
+  <p style="color:var(--muted); max-width:600px; font-size:17px; line-height:1.8;">
+    Mancave Smart Control Ltd was founded on the belief that Africa deserves world-class engineering solutions — designed here, deployed here, and built for our unique challenges and opportunities.
+  </p>
+  <div class="mv-grid fade-in">
+    <div class="mv-card" data-label="V">
+      <h3>Vision</h3>
+      <p>To become a leading African engineering company delivering advanced smart control solutions, transforming industries and enhancing lives through innovative technology.</p>
+    </div>
+    <div class="mv-card" data-label="M">
+      <h3>Mission</h3>
+      <p>To design, develop, and deliver state-of-the-art smart control systems that optimize performance, reduce costs, and promote sustainability for our clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="section-tag">What We Stand For</div>
+  <h2 class="section-title">Core <span>Values</span></h2>
+  <p style="color:var(--muted); max-width:600px; font-size:17px; line-height:1.8; margin-bottom:8px;">
+    Every decision we make is guided by these principles — from how we design systems to how we engage with clients and communities.
+  </p>
+  <div class="values-grid fade-in">
+    <div class="value-item"><div class="value-dot"></div><span>Innovation</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Integrity</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Collaboration</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Excellence</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Sustainability</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Customer Focus</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Accountability</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Respect</span></div>
+    <div class="value-item"><div class="value-dot"></div><span>Continuous Growth</span></div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="section-tag">What We Can Do</div>
+  <h2 class="section-title">Our <span>Capabilities</span></h2>
+  <p style="color:var(--muted); max-width:600px; font-size:17px; line-height:1.8; margin-bottom:8px;">
+    End-to-end engineering expertise — from the drawing board to deployment and beyond.
+  </p>
+  <div class="cap-grid fade-in">
+    <div class="cap-card">
+      <h3>System Design & Engineering</h3>
+      <p>Custom-designed smart control systems tailored to specific client needs — every architecture built from the ground up around your operational requirements.</p>
+    </div>
+    <div class="cap-card">
+      <h3>Software Development</h3>
+      <p>Advanced software solutions for seamless integration and control of various systems. From embedded firmware to cloud dashboards.</p>
+    </div>
+    <div class="cap-card">
+      <h3>Hardware Integration</h3>
+      <p>Expert integration of hardware components for optimal performance and reliability. Sensors, controllers, actuators, and communication modules.</p>
+    </div>
+    <div class="cap-card">
+      <h3>Consultation & Training</h3>
+      <p>Professional consultation services and comprehensive training programs to ensure your team can operate and maintain every system we deliver.</p>
+    </div>
+    <div class="cap-card">
+      <h3>Maintenance & Support</h3>
+      <p>Reliable maintenance and support services to ensure continuous system operation. We're with you long after deployment.</p>
+    </div>
+    <div class="cap-card">
+      <h3>Project Management</h3>
+      <p>Efficient project management to deliver solutions on time and within budget, with full transparency at every stage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-tag">How We Work</div>
+  <h2 class="section-title">Our <span>Approach</span></h2>
+  <p style="color:var(--muted); max-width:600px; font-size:17px; line-height:1.8;">
+    A client-centric methodology that ensures seamless integration, optimal performance, and long-term value on every project.
+  </p>
+  <div class="approach-steps fade-in">
+    <div class="step"><div class="step-num">// 01</div><h4>Discover</h4><p>We listen, ask the right questions, and deeply understand your unique operational environment and goals.</p></div>
+    <div class="step"><div class="step-num">// 02</div><h4>Design</h4><p>Our engineers design a custom solution architecture optimized for your specific requirements and budget.</p></div>
+    <div class="step"><div class="step-num">// 03</div><h4>Build</h4><p>We develop, test, and integrate every component with precision — software, hardware, and communication layers.</p></div>
+    <div class="step"><div class="step-num">// 04</div><h4>Deploy</h4><p>Careful installation, commissioning, and handover — including full training for your operations team.</p></div>
+    <div class="step"><div class="step-num">// 05</div><h4>Support</h4><p>Ongoing monitoring, maintenance, and continuous improvement to ensure your system keeps delivering value.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:12px;">
+        <div class="logo-icon">M</div>
+        MANCAVE SMART CONTROL LTD
+      </a>
+      <p>Engineering intelligent systems for the future. Automation, energy, robotics and smart infrastructure across Africa.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Divisions</h5>
+      <a href="services.html#smart-home">Smart Home</a>
+      <a href="services.html#industrial">Industrial</a>
+      <a href="services.html#energy">Energy</a>
+      <a href="services.html#robotics">Robotics</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="about.html">About Us</a>
+      <a href="#values">Core Values</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="mailto:info@mancavesmartcontrol.com">info@mancavesmartcontrol.com</a>
+      <a href="http://www.mancavesmartcontrol.com">mancavesmartcontrol.com</a>
+      <a href="tel:+254">+254</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Mancave Smart Control Ltd. All rights reserved.</p>
+    <p>Nairobi, Kenya</p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

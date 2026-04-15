@@ -1,0 +1,10 @@
+# Vite / Node
+website/node_modules/
+website/dist/
+
+# Archives (source lives in website/)
+files.zip
+
+# OS
+Thumbs.db
+Desktop.ini
