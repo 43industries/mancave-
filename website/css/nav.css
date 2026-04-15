@@ -102,11 +102,11 @@ body.nav-menu-open {
   overflow: hidden;
 }
 
-/* Medium-intensity circuit accents inspired by company profile */
+/* ── Circuit-line decorative overlay ── */
 .circuit-lines {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 10;
   pointer-events: none;
   overflow: hidden;
 }
@@ -115,70 +115,120 @@ body.nav-menu-open {
 .circuit-lines::after {
   content: "";
   position: absolute;
-  width: 280px;
-  height: 280px;
-  border: 1px solid rgba(0, 255, 231, 0.22);
-  opacity: 0.55;
+  width: 320px;
+  height: 320px;
+  border: 1.5px solid rgba(0, 255, 231, 0.18);
 }
 
 .circuit-lines::before {
-  top: 120px;
-  right: -90px;
+  top: 90px;
+  right: -60px;
   border-left: none;
   border-bottom: none;
+  box-shadow: inset -4px -4px 12px rgba(0, 255, 231, 0.06);
 }
 
 .circuit-lines::after {
-  bottom: 70px;
-  left: -90px;
+  bottom: 60px;
+  left: -60px;
   border-right: none;
   border-top: none;
+  box-shadow: inset 4px 4px 12px rgba(0, 255, 231, 0.06);
 }
 
 .circuit-trace {
+  display: block;
   position: absolute;
-  width: 380px;
-  height: 220px;
-  opacity: 0.5;
 }
 
 .circuit-left {
-  left: -70px;
-  top: 34%;
-  background:
-    linear-gradient(90deg, transparent 20%, rgba(0, 255, 231, 0.26) 20%, rgba(0, 255, 231, 0.26) 23%, transparent 23%),
-    linear-gradient(180deg, transparent 38%, rgba(0, 255, 231, 0.24) 38%, rgba(0, 255, 231, 0.24) 41%, transparent 41%),
-    radial-gradient(circle at 23% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
-    radial-gradient(circle at 63% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
-    radial-gradient(circle at 63% 74%, rgba(0, 255, 231, 0.7) 0 3px, transparent 4px);
+  left: 24px;
+  top: 28%;
+  width: 2px;
+  height: 260px;
+  background: linear-gradient(180deg, transparent, rgba(0, 255, 231, 0.35) 20%, rgba(0, 255, 231, 0.35) 80%, transparent);
+  box-shadow: 0 0 6px rgba(0, 255, 231, 0.15);
+}
+
+.circuit-left::before,
+.circuit-left::after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 255, 231, 0.35);
+  box-shadow: 0 0 6px rgba(0, 255, 231, 0.15);
+}
+
+.circuit-left::before {
+  top: 52px;
+  left: 0;
+  width: 80px;
+  height: 2px;
+}
+
+.circuit-left::after {
+  top: 160px;
+  left: 0;
+  width: 48px;
+  height: 2px;
 }
 
 .circuit-right {
-  right: -80px;
-  bottom: 16%;
-  transform: scaleX(-1);
-  background:
-    linear-gradient(90deg, transparent 20%, rgba(0, 255, 231, 0.26) 20%, rgba(0, 255, 231, 0.26) 23%, transparent 23%),
-    linear-gradient(180deg, transparent 38%, rgba(0, 255, 231, 0.24) 38%, rgba(0, 255, 231, 0.24) 41%, transparent 41%),
-    radial-gradient(circle at 23% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
-    radial-gradient(circle at 63% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
-    radial-gradient(circle at 63% 74%, rgba(0, 255, 231, 0.7) 0 3px, transparent 4px);
+  right: 24px;
+  bottom: 18%;
+  width: 2px;
+  height: 220px;
+  background: linear-gradient(180deg, transparent, rgba(0, 255, 231, 0.3) 20%, rgba(0, 255, 231, 0.3) 80%, transparent);
+  box-shadow: 0 0 6px rgba(0, 255, 231, 0.12);
 }
+
+.circuit-right::before,
+.circuit-right::after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 255, 231, 0.3);
+  box-shadow: 0 0 6px rgba(0, 255, 231, 0.12);
+}
+
+.circuit-right::before {
+  top: 40px;
+  right: 0;
+  width: 64px;
+  height: 2px;
+}
+
+.circuit-right::after {
+  top: 130px;
+  right: 0;
+  width: 96px;
+  height: 2px;
+}
+
+.circuit-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 255, 231, 0.6);
+  box-shadow: 0 0 8px rgba(0, 255, 231, 0.4);
+}
+
+.circuit-node-1 { left: 20px; top: calc(28% + 52px); }
+.circuit-node-2 { left: 100px; top: calc(28% + 48px); }
+.circuit-node-3 { left: 20px; top: calc(28% + 160px); }
+.circuit-node-4 { right: 20px; bottom: calc(18% + 180px); }
+.circuit-node-5 { right: 84px; bottom: calc(18% + 180px + 4px); }
+.circuit-node-6 { right: 20px; bottom: calc(18% + 90px); }
 
 @media (max-width: 768px) {
   .circuit-lines::before,
   .circuit-lines::after {
     width: 200px;
     height: 200px;
-    opacity: 0.42;
   }
 
-  .circuit-trace {
-    width: 260px;
-    opacity: 0.36;
-  }
-
-  .circuit-right {
-    display: none;
-  }
+  .circuit-left { height: 180px; }
+  .circuit-right { display: none; }
+  .circuit-node-4,
+  .circuit-node-5,
+  .circuit-node-6 { display: none; }
 }
