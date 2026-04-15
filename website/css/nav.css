@@ -101,3 +101,84 @@ body.nav-menu-open .nav-backdrop {
 body.nav-menu-open {
   overflow: hidden;
 }
+
+/* Medium-intensity circuit accents inspired by company profile */
+.circuit-lines {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.circuit-lines::before,
+.circuit-lines::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(0, 255, 231, 0.22);
+  opacity: 0.55;
+}
+
+.circuit-lines::before {
+  top: 120px;
+  right: -90px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.circuit-lines::after {
+  bottom: 70px;
+  left: -90px;
+  border-right: none;
+  border-top: none;
+}
+
+.circuit-trace {
+  position: absolute;
+  width: 380px;
+  height: 220px;
+  opacity: 0.5;
+}
+
+.circuit-left {
+  left: -70px;
+  top: 34%;
+  background:
+    linear-gradient(90deg, transparent 20%, rgba(0, 255, 231, 0.26) 20%, rgba(0, 255, 231, 0.26) 23%, transparent 23%),
+    linear-gradient(180deg, transparent 38%, rgba(0, 255, 231, 0.24) 38%, rgba(0, 255, 231, 0.24) 41%, transparent 41%),
+    radial-gradient(circle at 23% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 74%, rgba(0, 255, 231, 0.7) 0 3px, transparent 4px);
+}
+
+.circuit-right {
+  right: -80px;
+  bottom: 16%;
+  transform: scaleX(-1);
+  background:
+    linear-gradient(90deg, transparent 20%, rgba(0, 255, 231, 0.26) 20%, rgba(0, 255, 231, 0.26) 23%, transparent 23%),
+    linear-gradient(180deg, transparent 38%, rgba(0, 255, 231, 0.24) 38%, rgba(0, 255, 231, 0.24) 41%, transparent 41%),
+    radial-gradient(circle at 23% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 40%, rgba(0, 255, 231, 0.78) 0 3px, transparent 4px),
+    radial-gradient(circle at 63% 74%, rgba(0, 255, 231, 0.7) 0 3px, transparent 4px);
+}
+
+@media (max-width: 768px) {
+  .circuit-lines::before,
+  .circuit-lines::after {
+    width: 200px;
+    height: 200px;
+    opacity: 0.42;
+  }
+
+  .circuit-trace {
+    width: 260px;
+    opacity: 0.36;
+  }
+
+  .circuit-right {
+    display: none;
+  }
+}
