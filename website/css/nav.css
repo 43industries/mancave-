@@ -102,44 +102,35 @@ body.nav-menu-open {
   overflow: hidden;
 }
 
-/* ── Circuit board decorative overlay (SVG pattern) ── */
+/* ── Circuit board animated overlay ── */
 .circuit-lines {
   position: fixed;
   inset: 0;
   z-index: 10;
   pointer-events: none;
   overflow: hidden;
-  background:
-    url("../public/circuit-pattern.svg") center top / 800px 1200px repeat;
-  opacity: 0.6;
   mix-blend-mode: screen;
-  animation: circuit-pulse 6s ease-in-out infinite;
 }
 
-@keyframes circuit-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.72; }
+.circuit-lines svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.24; }
 }
 
 @media (max-width: 768px) {
-  .circuit-lines {
-    background-size: 500px 750px;
-    animation-duration: 8s;
-  }
-
-  @keyframes circuit-pulse {
-    0%, 100% { opacity: 0.35; }
-    50% { opacity: 0.52; }
+  .circuit-lines svg {
+    opacity: 0.4;
   }
 }
 
 @media (max-width: 480px) {
-  .circuit-lines {
-    background-size: 400px 600px;
-  }
-
-  @keyframes circuit-pulse {
-    0%, 100% { opacity: 0.25; }
-    50% { opacity: 0.4; }
+  .circuit-lines svg {
+    opacity: 0.28;
   }
 }
