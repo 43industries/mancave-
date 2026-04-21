@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+  <defs>
+    <filter id="g1"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="g2"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <!-- Dense PCB traces — all right-angle routed -->
+  <g stroke="#00ffe7" fill="none" stroke-width="1.1" stroke-linecap="round" opacity="0.5">
+    <!-- Col A (x≈40-80) -->
+    <polyline points="60,0 60,90 40,90 40,200 80,200 80,340 60,340 60,500"/>
+    <polyline points="60,500 60,620 40,620 40,780 80,780 80,900 60,900 60,1050 40,1050 40,1200"/>
+    <polyline points="40,90 0,90"/>
+    <polyline points="80,200 140,200 140,160"/>
+    <polyline points="80,340 160,340 160,400 220,400"/>
+    <polyline points="40,620 0,620"/>
+    <polyline points="80,780 160,780 160,720"/>
+    <polyline points="60,900 140,900 140,960 200,960"/>
+
+    <!-- Col B (x≈140-200) -->
+    <polyline points="160,0 160,60 140,60 140,160 200,160 200,280 160,280 160,400"/>
+    <polyline points="160,400 200,400 200,520 140,520 140,660 200,660 200,720 160,720 160,840"/>
+    <polyline points="160,840 200,840 200,960 160,960 160,1080 200,1080 200,1200"/>
+    <polyline points="200,160 280,160 280,120"/>
+    <polyline points="200,280 260,280 260,340 320,340"/>
+    <polyline points="140,520 80,520 80,500"/>
+    <polyline points="200,660 280,660 280,600"/>
+    <polyline points="200,840 280,840 280,900 340,900"/>
+    <polyline points="200,1080 280,1080 280,1020"/>
+
+    <!-- Col C (x≈280-340) -->
+    <polyline points="300,0 300,60 280,60 280,120 340,120 340,220 300,220 300,340"/>
+    <polyline points="300,340 340,340 340,460 280,460 280,600 340,600 340,700 300,700 300,820"/>
+    <polyline points="300,820 340,820 340,900 280,900 280,1020 340,1020 340,1120 300,1120 300,1200"/>
+    <polyline points="340,120 400,120 400,80"/>
+    <polyline points="340,220 400,220 400,280"/>
+    <polyline points="340,460 400,460"/>
+    <polyline points="340,600 420,600 420,540"/>
+    <polyline points="280,460 220,460 220,400"/>
+    <polyline points="340,700 420,700 420,760"/>
+    <polyline points="340,1020 420,1020 420,960"/>
+    <polyline points="280,600 220,600 220,660"/>
+
+    <!-- Col D (x≈400-460) -->
+    <polyline points="420,0 420,40 400,40 400,80 460,80 460,180 420,180 420,280"/>
+    <polyline points="420,280 400,280 400,380 460,380 460,460 400,460 400,540 420,540 420,640"/>
+    <polyline points="420,640 460,640 460,760 400,760 400,880 460,880 460,960 420,960 420,1060"/>
+    <polyline points="420,1060 400,1060 400,1140 460,1140 460,1200"/>
+    <polyline points="460,80 520,80 520,40"/>
+    <polyline points="460,180 540,180 540,240"/>
+    <polyline points="460,380 540,380 540,320"/>
+    <polyline points="460,640 540,640 540,580"/>
+    <polyline points="460,880 540,880 540,940"/>
+    <polyline points="400,1140 340,1140 340,1120"/>
+
+    <!-- Col E (x≈520-580) -->
+    <polyline points="540,0 540,40 520,40 520,140 560,140 560,240 540,240 540,380"/>
+    <polyline points="540,380 520,380 520,480 560,480 560,580 540,580 540,700"/>
+    <polyline points="540,700 560,700 560,800 520,800 520,940 560,940 560,1060 540,1060 540,1200"/>
+    <polyline points="560,140 620,140 620,100"/>
+    <polyline points="560,240 640,240 640,300"/>
+    <polyline points="560,480 640,480 640,420"/>
+    <polyline points="520,480 460,480 460,460"/>
+    <polyline points="560,700 640,700 640,760"/>
+    <polyline points="560,800 640,800 640,740"/>
+    <polyline points="560,940 640,940 640,1000"/>
+
+    <!-- Col F (x≈620-680) -->
+    <polyline points="660,0 660,60 640,60 640,100 700,100 700,200 660,200 660,300"/>
+    <polyline points="660,300 640,300 640,420 700,420 700,520 660,520 660,640"/>
+    <polyline points="660,640 700,640 700,740 640,740 640,860 700,860 700,1000 660,1000 660,1120"/>
+    <polyline points="660,1120 640,1120 640,1200"/>
+    <polyline points="700,100 760,100 760,60"/>
+    <polyline points="700,200 780,200 780,260"/>
+    <polyline points="700,420 780,420 780,380"/>
+    <polyline points="700,520 780,520"/>
+    <polyline points="700,640 780,640 780,580"/>
+    <polyline points="700,860 780,860"/>
+    <polyline points="700,1000 760,1000 760,1060 800,1060"/>
+
+    <!-- Col G (x≈740-800) -->
+    <polyline points="760,0 760,60 780,60 780,140 740,140 740,260 780,260 780,380"/>
+    <polyline points="780,380 740,380 740,520 780,520 780,640 740,640 740,760"/>
+    <polyline points="740,760 780,760 780,860 740,860 740,1000 760,1000 760,1060"/>
+    <polyline points="760,1060 740,1060 740,1160 780,1160 780,1200"/>
+    <polyline points="740,140 700,140 700,100"/>
+    <polyline points="740,520 700,520"/>
+  </g>
+
+  <!-- Small junction nodes -->
+  <g fill="#00ffe7" filter="url(#g1)" opacity="0.75">
+    <circle cx="60" cy="90" r="3"/><circle cx="80" cy="200" r="3.5"/><circle cx="60" cy="340" r="3"/>
+    <circle cx="60" cy="500" r="3.5"/><circle cx="40" cy="620" r="3"/><circle cx="80" cy="780" r="3.5"/>
+    <circle cx="60" cy="900" r="3"/><circle cx="40" cy="1050" r="3"/>
+    <circle cx="160" cy="60" r="2.5"/><circle cx="200" cy="160" r="3.5"/><circle cx="160" cy="280" r="3"/>
+    <circle cx="200" cy="400" r="3"/><circle cx="140" cy="520" r="3.5"/><circle cx="200" cy="660" r="3"/>
+    <circle cx="160" cy="720" r="2.5"/><circle cx="200" cy="840" r="3"/><circle cx="200" cy="1080" r="3"/>
+    <circle cx="300" cy="60" r="2.5"/><circle cx="340" cy="120" r="3.5"/><circle cx="300" cy="220" r="3"/>
+    <circle cx="340" cy="340" r="3.5"/><circle cx="280" cy="460" r="3"/><circle cx="340" cy="600" r="3.5"/>
+    <circle cx="300" cy="700" r="3"/><circle cx="340" cy="900" r="3"/><circle cx="340" cy="1020" r="3.5"/>
+    <circle cx="300" cy="1120" r="3"/>
+    <circle cx="420" cy="40" r="2.5"/><circle cx="460" cy="80" r="3.5"/><circle cx="420" cy="280" r="3"/>
+    <circle cx="460" cy="380" r="3"/><circle cx="400" cy="460" r="3.5"/><circle cx="420" cy="540" r="3"/>
+    <circle cx="460" cy="640" r="3.5"/><circle cx="460" cy="880" r="3"/><circle cx="420" cy="960" r="3.5"/>
+    <circle cx="460" cy="1140" r="3"/>
+    <circle cx="540" cy="40" r="2.5"/><circle cx="560" cy="140" r="3.5"/><circle cx="540" cy="240" r="3"/>
+    <circle cx="560" cy="480" r="3"/><circle cx="540" cy="580" r="3.5"/><circle cx="560" cy="700" r="3"/>
+    <circle cx="560" cy="940" r="3.5"/><circle cx="540" cy="1060" r="3"/>
+    <circle cx="660" cy="60" r="2.5"/><circle cx="700" cy="100" r="3.5"/><circle cx="660" cy="200" r="3"/>
+    <circle cx="700" cy="420" r="3"/><circle cx="660" cy="520" r="3.5"/><circle cx="700" cy="640" r="3"/>
+    <circle cx="700" cy="860" r="3"/><circle cx="660" cy="1000" r="3.5"/><circle cx="660" cy="1120" r="3"/>
+    <circle cx="760" cy="60" r="2.5"/><circle cx="780" cy="260" r="3"/><circle cx="740" cy="520" r="3"/>
+    <circle cx="780" cy="640" r="3"/><circle cx="740" cy="760" r="3.5"/><circle cx="760" cy="1060" r="3"/>
+  </g>
+
+  <!-- Bright glow accent nodes -->
+  <g filter="url(#g2)">
+    <circle cx="60" cy="500" r="10" fill="#00ffe7" opacity="0.22"/>
+    <circle cx="200" cy="160" r="9" fill="#00ffe7" opacity="0.2"/>
+    <circle cx="340" cy="600" r="12" fill="#00ffe7" opacity="0.18"/>
+    <circle cx="460" cy="80" r="8" fill="#00ffe7" opacity="0.22"/>
+    <circle cx="420" cy="640" r="10" fill="#00ffe7" opacity="0.2"/>
+    <circle cx="560" cy="480" r="11" fill="#00ffe7" opacity="0.2"/>
+    <circle cx="700" cy="100" r="9" fill="#00ffe7" opacity="0.22"/>
+    <circle cx="660" cy="520" r="10" fill="#00ffe7" opacity="0.2"/>
+    <circle cx="740" cy="760" r="8" fill="#00ffe7" opacity="0.22"/>
+    <circle cx="340" cy="1020" r="9" fill="#00ffe7" opacity="0.18"/>
+    <circle cx="560" cy="940" r="10" fill="#00ffe7" opacity="0.2"/>
+    <circle cx="80" cy="780" r="8" fill="#00ffe7" opacity="0.2"/>
+  </g>
+</svg>

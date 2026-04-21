@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/mancave-/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mancave Smart Control services — smart home, industrial automation, energy management, and robotics solutions in Kenya and Africa.">
+<meta name="theme-color" content="#050a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%23050a12' width='32' height='32'/%3E%3Ctext x='16' y='23' text-anchor='middle' fill='%2300ffe7' font-size='15' font-family='system-ui,sans-serif' font-weight='700'%3EM%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+<title>Services – Mancave Smart Control Ltd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#050a12;--bg2:#080f1c;--bg3:#0a1525;
+    --cyan:#00ffe7;--cyan-dim:#00ffe720;--cyan-mid:#00ffe750;
+    --gold:#ffc93c;--white:#e8f4ff;--muted:#6a8aaa;--border:#1a2e45;--border-glow:#00ffe730;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--white);font-family:'Rajdhani',sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden;}
+  body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.07) 2px,rgba(0,0,0,0.07) 4px);pointer-events:none;z-index:9999;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:70px;background:rgba(5,10,18,0.9);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);}
+  .nav-logo{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;letter-spacing:3px;color:var(--cyan);text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .logo-icon{width:36px;height:36px;border:1.5px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:var(--cyan);position:relative;}
+  .logo-icon::before{content:'';position:absolute;inset:3px;border:1px solid var(--cyan-mid);}
+  .nav-links{display:flex;gap:36px;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cyan);}
+  .nav-cta{background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:8px 22px;font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-decoration:none;transition:background 0.2s,box-shadow 0.2s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);}
+  .nav-cta:hover{background:var(--cyan-dim);box-shadow:0 0 20px var(--cyan-mid);}
+  .page-hero{padding:140px 5% 80px;background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+  .page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.3;}
+  .page-hero-content{position:relative;}
+  .breadcrumb{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;margin-bottom:24px;}
+  .breadcrumb a{color:var(--cyan);text-decoration:none;}
+  .breadcrumb span{margin:0 8px;}
+  .page-hero h1{font-family:'Orbitron',monospace;font-size:clamp(32px,5vw,64px);font-weight:900;line-height:1.05;color:var(--white);margin-bottom:20px;}
+  .page-hero h1 span{color:var(--cyan);}
+  .page-hero p{font-size:18px;color:var(--muted);max-width:600px;line-height:1.8;}
+  section{padding:80px 5%;}
+  .section-tag{font-family:'Space Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+  .section-tag::before{content:'';display:block;width:30px;height:1px;background:var(--cyan);}
+  .section-title{font-family:'Orbitron',monospace;font-size:clamp(22px,3.5vw,40px);font-weight:700;line-height:1.1;margin-bottom:20px;}
+  .section-title span{color:var(--cyan);}
+  /* SERVICE DETAIL SECTIONS */
+  .service-section{padding:80px 5%;border-bottom:1px solid var(--border);}
+  .service-section:nth-child(even){background:var(--bg2);}
+  .service-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;}
+  .service-layout.reverse{direction:rtl;}
+  .service-layout.reverse > *{direction:ltr;}
+  .service-header{}
+  .service-number{font-family:'Space Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:4px;margin-bottom:20px;}
+  .service-header h2{font-family:'Orbitron',monospace;font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.1;color:var(--white);margin-bottom:20px;}
+  .service-header h2 span{color:var(--cyan);}
+  .service-header p{color:var(--muted);font-size:16px;line-height:1.9;margin-bottom:28px;}
+  .service-tag{display:inline-block;border:1px solid var(--border-glow);color:var(--cyan);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;padding:6px 14px;margin-right:8px;margin-bottom:8px;text-transform:uppercase;}
+  .service-detail-list{}
+  .service-detail-item{border:1px solid var(--border);padding:24px;margin-bottom:12px;display:flex;gap:20px;align-items:flex-start;transition:border-color 0.3s;}
+  .service-detail-item:hover{border-color:var(--border-glow);}
+  .sdi-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+  .sdi-content h4{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);margin-bottom:8px;}
+  .sdi-content p{color:var(--muted);font-size:14px;line-height:1.7;}
+  /* CTA STRIP */
+  .cta-strip{background:var(--bg);padding:80px 5%;text-align:center;border-top:1px solid var(--border);}
+  .cta-strip h2{font-family:'Orbitron',monospace;font-size:clamp(24px,4vw,48px);font-weight:900;color:var(--white);margin-bottom:16px;}
+  .cta-strip h2 span{color:var(--cyan);}
+  .cta-strip p{color:var(--muted);font-size:17px;margin-bottom:40px;}
+  .btn-primary{background:var(--cyan);color:var(--bg);padding:14px 36px;font-family:'Orbitron',monospace;font-size:12px;font-weight:700;letter-spacing:2px;text-decoration:none;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:box-shadow 0.2s,transform 0.2s;display:inline-block;}
+  .btn-primary:hover{box-shadow:0 0 30px var(--cyan-mid);transform:translateY(-2px);}
+  footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 5% 24px;}
+  .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+  .footer-brand p{color:var(--muted);font-size:14px;line-height:1.8;margin-top:16px;max-width:280px;}
+  .footer-col h5{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:20px;}
+  .footer-col a{display:block;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:10px;transition:color 0.2s;}
+  .footer-col a:hover{color:var(--white);}
+  .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-bottom p{color:var(--muted);font-size:12px;font-family:'Space Mono',monospace;}
+  .fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  @media(max-width:768px){.service-layout{grid-template-columns:1fr;}.service-layout.reverse{direction:ltr;}.footer-top{grid-template-columns:1fr 1fr;}}
+</style>
+  <link rel="stylesheet" crossorigin href="/mancave-/assets/nav-BbkqXXvQ.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><div class="logo-icon">M</div>MSC</a>
+  <div class="nav-links" id="primary-nav">
+    <a href="services.html" class="active">Services</a>
+    <a href="index.html#technology">Technology</a>
+    <a href="index.html#industries">Industries</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <a href="index.html#contact" class="nav-cta">Get Quote</a>
+  </div>
+</nav>
+<div class="nav-backdrop" aria-hidden="true"></div>
+<div class="circuit-lines" aria-hidden="true"></div>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Services</div>
+    <h1>Our <span>Solutions</span></h1>
+    <p>Four specialized divisions delivering end-to-end smart control systems across residential, commercial, industrial, and agricultural sectors.</p>
+  </div>
+</div>
+
+<!-- SMART HOME -->
+<div class="service-section" id="smart-home">
+  <div class="service-layout fade-in">
+    <div class="service-header">
+      <div class="service-number">// DIVISION 01</div>
+      <h2>Smart Home<br><span>Solutions</span></h2>
+      <p>Transform any residence into a fully intelligent, automated environment. From lighting and climate to security and energy — all controlled seamlessly.</p>
+      <span class="service-tag">Residential</span>
+      <span class="service-tag">Commercial</span>
+      <span class="service-tag">IoT</span>
+    </div>
+    <div class="service-detail-list">
+      <div class="service-detail-item"><div class="sdi-icon">💡</div><div class="sdi-content"><h4>Intelligent Lighting</h4><p>Automated, scene-based, and occupancy-triggered lighting systems with energy optimization built in.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🌡️</div><div class="sdi-content"><h4>Climate Control</h4><p>Smart HVAC integration with predictive scheduling, remote control, and real-time efficiency monitoring.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🔒</div><div class="sdi-content"><h4>Security & Access</h4><p>Integrated security systems including smart locks, cameras, motion detection, and remote monitoring.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">📱</div><div class="sdi-content"><h4>Central Control</h4><p>One app or panel to manage your entire smart environment — from anywhere in the world.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- INDUSTRIAL -->
+<div class="service-section" id="industrial">
+  <div class="service-layout reverse fade-in">
+    <div class="service-header">
+      <div class="service-number">// DIVISION 02</div>
+      <h2>Industrial<br><span>Automation</span></h2>
+      <p>Optimize manufacturing processes, reduce downtime, and gain full operational intelligence with advanced PLC and SCADA-based automation solutions.</p>
+      <span class="service-tag">Manufacturing</span>
+      <span class="service-tag">SCADA</span>
+      <span class="service-tag">PLC</span>
+    </div>
+    <div class="service-detail-list">
+      <div class="service-detail-item"><div class="sdi-icon">⚙️</div><div class="sdi-content"><h4>PLC Systems</h4><p>Programmable Logic Controller design and deployment for precise process automation and control.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🖥️</div><div class="sdi-content"><h4>SCADA Platforms</h4><p>Real-time supervisory control and data acquisition systems for complete operational visibility.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🔗</div><div class="sdi-content"><h4>Industrial Networks</h4><p>Fieldbus, Ethernet/IP, Modbus, and industrial wireless communication network design and integration.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">📊</div><div class="sdi-content"><h4>Process Monitoring</h4><p>Continuous monitoring, alarming, and reporting systems with real-time data analytics dashboards.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ENERGY -->
+<div class="service-section" id="energy">
+  <div class="service-layout fade-in">
+    <div class="service-header">
+      <div class="service-number">// DIVISION 03</div>
+      <h2>Energy<br><span>Management</span></h2>
+      <p>Reduce energy costs, integrate renewable sources, and move toward energy independence with intelligent energy management solutions built for Africa.</p>
+      <span class="service-tag">Solar PV</span>
+      <span class="service-tag">Storage</span>
+      <span class="service-tag">Sustainability</span>
+    </div>
+    <div class="service-detail-list">
+      <div class="service-detail-item"><div class="sdi-icon">☀️</div><div class="sdi-content"><h4>Solar PV Systems</h4><p>End-to-end solar photovoltaic design, supply, installation, and commissioning for any scale.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🔋</div><div class="sdi-content"><h4>Battery Storage</h4><p>Battery energy storage system integration for load shifting, backup power, and grid independence.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">📈</div><div class="sdi-content"><h4>Energy Monitoring</h4><p>Smart metering and analytics platforms that identify waste, track consumption, and optimize costs.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🌿</div><div class="sdi-content"><h4>Sustainability Planning</h4><p>Carbon footprint assessment and long-term energy transition roadmaps for businesses of all sizes.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROBOTICS -->
+<div class="service-section" id="robotics">
+  <div class="service-layout reverse fade-in">
+    <div class="service-header">
+      <div class="service-number">// DIVISION 04</div>
+      <h2>Robotics &<br><span>Future Systems</span></h2>
+      <p>The future of industry is autonomous. From inspection drones to agricultural robots, we build AI-powered robotic systems for the most demanding environments.</p>
+      <span class="service-tag">AI-Powered</span>
+      <span class="service-tag">Agriculture</span>
+      <span class="service-tag">Warehouse</span>
+    </div>
+    <div class="service-detail-list">
+      <div class="service-detail-item"><div class="sdi-icon">🔍</div><div class="sdi-content"><h4>Inspection Robots</h4><p>Autonomous inspection systems for pipelines, structures, and hazardous environments using machine vision and sensor fusion.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🌾</div><div class="sdi-content"><h4>Agricultural Robots</h4><p>Precision farming robots for planting, monitoring, irrigation, and harvesting — reducing labor costs and improving yields.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">📦</div><div class="sdi-content"><h4>Warehouse Automation</h4><p>Automated guided vehicles (AGVs), conveyor systems, and inventory management robots for logistics operations.</p></div></div>
+      <div class="service-detail-item"><div class="sdi-icon">🤖</div><div class="sdi-content"><h4>AI-Powered Systems</h4><p>Machine learning and computer vision integration for adaptive, self-optimizing robotic systems.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Ready to <span>Automate</span>?</h2>
+  <p>Let's discuss your project and engineer the right solution for your needs.</p>
+  <a href="index.html#contact" class="btn-primary">Start a Conversation →</a>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="font-size:12px;"><div class="logo-icon">M</div>MANCAVE SMART CONTROL LTD</a>
+      <p>Engineering intelligent systems for the future. Automation, energy, robotics and smart infrastructure across Africa.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Divisions</h5>
+      <a href="#smart-home">Smart Home</a>
+      <a href="#industrial">Industrial</a>
+      <a href="#energy">Energy</a>
+      <a href="#robotics">Robotics</a>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <a href="about.html">About Us</a>
+      <a href="about.html#values">Core Values</a>
+      <a href="about.html#capabilities">Capabilities</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <a href="mailto:info@mancavesmartcontrol.com">info@mancavesmartcontrol.com</a>
+      <a href="http://www.mancavesmartcontrol.com">mancavesmartcontrol.com</a>
+      <a href="tel:+254">+254</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Mancave Smart Control Ltd. All rights reserved.</p>
+    <p>Nairobi, Kenya</p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>
